@@ -1,0 +1,23 @@
+Blockchain app 1 - how to run
+
+to run all tests: npm run test
+to run dev-test: npm run dev-test
+to start p2p-server: npm start
+to start p2p-server as dev: npm run dev
+ 
+note: postman usage starts in section 4
+
+* in terminal $npm run dev (for main server instance)
+* start up Postman application on Mac
+* run commands in Postman using endpoints specified in app/index.js ie
+    * specify get request at: localhost:3001/blocks
+    * then if you want to mine/add new block to chain post localhost:3001/mine
+	select JSON as body then
+	{
+		“data” : “foo”
+	}
+	hit enter
+
+When connecting a new server make sure to use the P2P_PORT as PEER connection ie
+	PEERS=ws://localhost:5001 as opposed to PEERS=ws://localhost:3001 (here 3001 is HTTP_PORT)
+In terminal $ HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev
